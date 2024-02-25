@@ -1,31 +1,27 @@
 #include "bsp_clk.h"
 #include "bsp_delay.h"
 #include "bsp_led.h"
+#include "beep.h"
+#include "bsp_key.h"
+#include "test.h"
 
-void led_breath(u8 roat)
+// #define LED_BEEP_TEST
+#define KEY_TEST
+
+void run_test_case(void)
 {
-    led_switch(LED0, ON);
-    delay(roat);
-    led_switch(LED0, OFF);
-    delay(100 - roat);
+#ifdef LED_BEEP_TEST
+    led_beep_test();
+#endif
+#ifdef KEY_TEST
+    key_test();
+#endif
 }
 
 int main()
 {
-    int cnt = 0;
-    uint8_t inv = 1;
-    clk_enable();
-    led_init();
-
     while (1) {
-        led_breath(cnt);
-        if (inv) {
-            cnt++;
-        }else {
-            cnt--;
-        }
-        if ( cnt == 100 || cnt == 0 ) {
-            inv ^= 1;
-        }
+        run_test_case();
     }
+    return 0;
 }
