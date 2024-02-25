@@ -13,7 +13,9 @@ INCDIRS 		:= imx6ul \
 				   bsp/beep \
 				   bsp/gpio \
 				   bsp/key \
-				   test_cases 
+				   test_cases \
+				   bsp/exit \
+				   bsp/init 
 				   			   
 SRCDIRS			:= project \
 				   bsp/clk \
@@ -22,7 +24,9 @@ SRCDIRS			:= project \
 				   bsp/beep \
 				   bsp/gpio \
 				   bsp/key \
-				   test_cases 
+				   test_cases \
+				   bsp/exit \
+				   bsp/init 
 				   
 				   
 INCLUDE			:= $(patsubst %, -I %, $(INCDIRS))

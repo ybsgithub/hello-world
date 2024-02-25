@@ -16,10 +16,6 @@ void led_beep_test(void)
     int cnt = 0;
     uint8_t inv = 1;
 
-    clk_enable();
-    led_init();
-    beep_init();
-
     while (1) {
         led_breath(cnt);
         if (inv) {

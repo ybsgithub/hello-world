@@ -11,11 +11,6 @@ void key_test(void)
     unsigned char beep_state = OFF;
     int keyvalue = 0;
 
-    clk_enable();
-    led_init();
-    beep_init();
-    key_init();
-
     while (1) {
         keyvalue = key_getvalue();
         if (keyvalue) {

@@ -420,7 +420,7 @@ typedef struct
 
 typedef struct 
 {
-	volatile unsigned int DR;							
+	volatile unsigned int DR;	/* 0x00 */			
 	volatile unsigned int GDIR; 							
 	volatile unsigned int PSR;								
 	volatile unsigned int ICR1; 							

@@ -4,9 +4,12 @@
 #include "beep.h"
 #include "bsp_key.h"
 #include "test.h"
+#include "bsp_exit.h"
+#include "bsp_init.h"
 
 // #define LED_BEEP_TEST
-#define KEY_TEST
+// #define KEY_TEST
+#define EXIT_TEST
 
 void run_test_case(void)
 {
@@ -16,10 +19,25 @@ void run_test_case(void)
 #ifdef KEY_TEST
     key_test();
 #endif
+#ifdef EXIT_TEST
+    exit_test();
+#endif
 }
 
 int main()
 {
+    int_init(); //init irq
+    imx6u_clkinit();
+    clk_enable();
+
+    led_init();
+    beep_init();
+    key_init();
+
+#ifdef EXIT_TEST
+    exit_init();
+#endif
+
     while (1) {
         run_test_case();
     }
