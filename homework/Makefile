@@ -1,5 +1,5 @@
 CROSS_COMPILE 	?= arm-linux-gnueabihf-
-TARGET		  	?= bsp
+TARGET		  	?= pixel
 
 CC 				:= $(CROSS_COMPILE)gcc
 LD				:= $(CROSS_COMPILE)ld
@@ -9,12 +9,24 @@ OBJDUMP 		:= $(CROSS_COMPILE)objdump
 INCDIRS 		:= imx6ul \
 				   bsp/clk \
 				   bsp/led \
-				   bsp/delay 
+				   bsp/delay \
+				   bsp/beep \
+				   bsp/gpio \
+				   bsp/key \
+				   test_cases \
+				   bsp/exit \
+				   bsp/init 
 				   			   
 SRCDIRS			:= project \
 				   bsp/clk \
 				   bsp/led \
-				   bsp/delay 
+				   bsp/delay \
+				   bsp/beep \
+				   bsp/gpio \
+				   bsp/key \
+				   test_cases \
+				   bsp/exit \
+				   bsp/init 
 				   
 				   
 INCLUDE			:= $(patsubst %, -I %, $(INCDIRS))
