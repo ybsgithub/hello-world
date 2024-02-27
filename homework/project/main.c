@@ -11,7 +11,8 @@
 // #define KEY_TEST
 // #define EXIT_TEST
 // #define EPIT_TIMER_TEST
-#define KEYFILTER_TEST
+// #define KEYFILTER_TEST
+#define UART_TEST
 
 void run_test_case(void)
 {
@@ -30,12 +31,16 @@ void run_test_case(void)
 #ifdef KEYFILTER_TEST
     keyfilter_test();
 #endif
+#ifdef UART_TEST
+    uart_test();
+#endif
 }
 
 int main()
 {
     int_init(); //init irq
     imx6u_clkinit();
+    delay_init();
     clk_enable();
 
     led_init();

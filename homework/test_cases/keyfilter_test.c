@@ -14,6 +14,6 @@ void keyfilter_test(void)
 	{	
 		state = !state;
 		led_switch(LED0, state);
-		delay(ms);
+		delayms(ms);
 	}
 }
