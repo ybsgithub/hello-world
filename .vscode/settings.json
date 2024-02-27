@@ -3,6 +3,8 @@
         "bsp_gpio.h": "c",
         "bsp_led.h": "c",
         "bsp_key.h": "c",
-        "bsp_delay.h": "c"
+        "bsp_delay.h": "c",
+        "bsp_epittimer.h": "c",
+        "bsp_keyfilter.h": "c"
     }
 }

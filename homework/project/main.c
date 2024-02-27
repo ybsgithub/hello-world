@@ -9,7 +9,10 @@
 
 // #define LED_BEEP_TEST
 // #define KEY_TEST
-#define EXIT_TEST
+// #define EXIT_TEST
+// #define EPIT_TIMER_TEST
+// #define KEYFILTER_TEST
+#define UART_TEST
 
 void run_test_case(void)
 {
@@ -22,12 +25,22 @@ void run_test_case(void)
 #ifdef EXIT_TEST
     exit_test();
 #endif
+#ifdef EPIT_TIMER_TEST
+    epit_timer_test();
+#endif
+#ifdef KEYFILTER_TEST
+    keyfilter_test();
+#endif
+#ifdef UART_TEST
+    uart_test();
+#endif
 }
 
 int main()
 {
     int_init(); //init irq
     imx6u_clkinit();
+    delay_init();
     clk_enable();
 
     led_init();
@@ -38,8 +51,10 @@ int main()
     exit_init();
 #endif
 
+    run_test_case();
+
     while (1) {
-        run_test_case();
+        delay(500);
     }
     return 0;
 }
