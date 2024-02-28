@@ -6,6 +6,7 @@
 #include "test.h"
 #include "bsp_exit.h"
 #include "bsp_init.h"
+#include "stdio.h"
 
 // #define LED_BEEP_TEST
 // #define KEY_TEST

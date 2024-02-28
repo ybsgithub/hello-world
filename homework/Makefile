@@ -20,7 +20,8 @@ INCDIRS 		:= imx6ul \
 				   bsp/init \
 				   bsp/epittimer \
 				   bsp/keyfilter \
-				   bsp/uart 
+				   bsp/uart \
+				   stdio/include 
 				   			   
 SRCDIRS			:= project \
 				   bsp/clk \
@@ -34,7 +35,8 @@ SRCDIRS			:= project \
 				   bsp/init \
 				   bsp/epittimer \
 				   bsp/keyfilter \
-				   bsp/uart 
+				   bsp/uart \
+				   stdio/lib 
 				   
 				   
 INCLUDE			:= $(patsubst %, -I %, $(INCDIRS))
@@ -62,7 +64,7 @@ $(SOBJS) : obj/%.o : %.S
 	$(CC) -Wall -nostdlib -fno-builtin -c -O2  $(INCLUDE) -o $@ $<
 
 $(COBJS) : obj/%.o : %.c
-	$(CC) -Wall -nostdlib -fno-builtin -c -O2  $(INCLUDE) -o $@ $<
+	$(CC) -Wall -Wa,-mimplicit-it=thumb -nostdlib -fno-builtin -c -O2  $(INCLUDE) -o $@ $<
 	
 clean:
 	rm -rf $(TARGET).elf $(TARGET).dis $(TARGET).bin $(COBJS) $(SOBJS)
