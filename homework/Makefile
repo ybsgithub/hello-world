@@ -21,7 +21,13 @@ INCDIRS 		:= imx6ul \
 				   bsp/epittimer \
 				   bsp/keyfilter \
 				   bsp/uart \
-				   stdio/include 
+				   stdio/include \
+				   bsp/lcd \
+				   bsp/spi \
+				   bsp/icm20608 \
+				   bsp/rtc \
+				   bsp/i2c \
+				   bsp/ap3216c 
 				   			   
 SRCDIRS			:= project \
 				   bsp/clk \
@@ -36,7 +42,13 @@ SRCDIRS			:= project \
 				   bsp/epittimer \
 				   bsp/keyfilter \
 				   bsp/uart \
-				   stdio/lib 
+				   stdio/lib \
+				   bsp/lcd \
+				   bsp/spi \
+				   bsp/icm20608 \
+				   bsp/rtc \
+				   bsp/i2c \
+				   bsp/ap3216c 
 				   
 				   
 INCLUDE			:= $(patsubst %, -I %, $(INCDIRS))
@@ -64,7 +76,7 @@ $(SOBJS) : obj/%.o : %.S
 	$(CC) -Wall -nostdlib -fno-builtin -c -O2  $(INCLUDE) -o $@ $<
 
 $(COBJS) : obj/%.o : %.c
-	$(CC) -Wall -Wa,-mimplicit-it=thumb -nostdlib -fno-builtin -c -O2  $(INCLUDE) -o $@ $<
+	$(CC) -Wall -march=armv7-a -mfpu=neon-vfpv4 -mfloat-abi=hard -Wa,-mimplicit-it=thumb -nostdlib -fno-builtin -c -O2  $(INCLUDE) -o $@ $<
 	
 clean:
 	rm -rf $(TARGET).elf $(TARGET).dis $(TARGET).bin $(COBJS) $(SOBJS)
