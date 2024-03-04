@@ -20,7 +20,24 @@
 // #define UART_TEST
 // #define LCD_TEST
 // #define ICM_SPI_TEST
-#define AP3216C_TEST
+// #define AP3216C_TEST
+// #define TOUCHSCREEN_TEST
+#define BACKLIGHT_TEST
+
+void imx6ul_hardfpu_enable(void)
+{
+	uint32_t cpacr;
+	uint32_t fpexc;
+
+	/* 使能NEON和FPU */
+	cpacr = __get_CPACR();
+	cpacr = (cpacr & ~(CPACR_ASEDIS_Msk | CPACR_D32DIS_Msk))
+		   |  (3UL << CPACR_cp10_Pos) | (3UL << CPACR_cp11_Pos);
+	__set_CPACR(cpacr);
+	fpexc = __get_FPEXC();
+	fpexc |= 0x40000000UL;	
+	__set_FPEXC(fpexc);
+}
 
 void run_test_case(void)
 {
@@ -51,15 +68,21 @@ void run_test_case(void)
 #ifdef AP3216C_TEST
     ap3216c_test();
 #endif
+#ifdef TOUCHSCREEN_TEST
+    touchscreen_test();
+#endif
+#ifdef BACKLIGHT_TEST
+    backlight_test();
+#endif
 }
 
 int main()
 {
-    int i = 3, t = 0;
 	char buf[160];
 	struct rtc_datetime rtcdate;
     unsigned char state = OFF;
 
+    imx6ul_hardfpu_enable();	/* 使能I.MX6U的硬件浮点 			*/
     int_init(); //init irq
     imx6u_clkinit();
     delay_init();

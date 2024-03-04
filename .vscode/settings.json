@@ -5,6 +5,14 @@
         "bsp_key.h": "c",
         "bsp_delay.h": "c",
         "bsp_epittimer.h": "c",
-        "bsp_keyfilter.h": "c"
+        "bsp_keyfilter.h": "c",
+        "bsp_uart.h": "c",
+        "bsp_icm20608.h": "c",
+        "stdio.h": "c",
+        "bsp_rtc.h": "c",
+        "bsp_lcdapi.h": "c",
+        "bsp_ap3216c.h": "c",
+        "bsp_i2c.h": "c",
+        "bsp_gt9147.h": "c"
     }
 }

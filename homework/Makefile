@@ -27,7 +27,9 @@ INCDIRS 		:= imx6ul \
 				   bsp/icm20608 \
 				   bsp/rtc \
 				   bsp/i2c \
-				   bsp/ap3216c 
+				   bsp/ap3216c \
+				   bsp/touchscreen \
+				   bsp/backlight 
 				   			   
 SRCDIRS			:= project \
 				   bsp/clk \
@@ -48,7 +50,9 @@ SRCDIRS			:= project \
 				   bsp/icm20608 \
 				   bsp/rtc \
 				   bsp/i2c \
-				   bsp/ap3216c 
+				   bsp/ap3216c \
+				   bsp/touchscreen \
+				   bsp/backlight 
 				   
 				   
 INCLUDE			:= $(patsubst %, -I %, $(INCDIRS))

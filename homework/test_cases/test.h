@@ -10,5 +10,7 @@ void uart_test(void);
 void lcd_test(void);
 void icm_spi_test(void);
 void ap3216c_test(void);
+void touchscreen_test(void);
+void backlight_test(void);
 
 #endif
